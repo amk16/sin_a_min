@@ -1,38 +1,21 @@
 import React, { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 
-const Navbar: React.FC = () => {
+interface NavbarProps {
+  currentSection: string;
+  onNavigate: (sectionName: string) => void;
+}
+
+const Navbar: React.FC<NavbarProps> = ({ currentSection, onNavigate }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState<string>('home');
 
-  // Update active section based on scroll position
-  React.useEffect(() => {
-    const handleScroll = () => {
-      const sections = document.querySelectorAll<HTMLElement>('section[id]');
-      let currentSection = activeSection;
-
-      sections.forEach((section) => {
-        const rect = section.getBoundingClientRect();
-        // If section top is above viewport top but not too far and bottom is below a threshold
-        if (rect.top <= 100 && rect.bottom >= 100) {
-          currentSection = section.id;
-        }
-      });
-
-      if (currentSection !== activeSection) {
-        setActiveSection(currentSection);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    // Initial check
-    handleScroll();
-
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [activeSection]);
+  const handleNavClick = (sectionName: string) => {
+    onNavigate(sectionName);
+    setIsMobileMenuOpen(false); // Close mobile menu after navigation
+  };
 
   return (
-    <nav className="bg-[#eae5de] relative">
+    <nav className="bg-[#FBF5ED] lg:fixed lg:top-0 lg:left-0 lg:right-0 lg:z-[9999]" style={{ transform: 'translateZ(0)', willChange: 'transform' }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-6">
         <div className="flex items-center justify-between">
           {/* Mobile menu button */}
@@ -47,57 +30,63 @@ const Navbar: React.FC = () => {
           <div className="hidden lg:flex items-center justify-between w-full">
             {/* Left navigation items */}
             <div className="flex items-center gap-20 ml-25">
-              <a
-                href="#about"
+              <button
+                onClick={() => handleNavClick('landing')}
                 className={`text-[11px] text-gray-500 hover:text-gray-400 tracking-[0.3em] uppercase font-light italic transition-colors ${
-                  activeSection === 'about' ? 'border-b-2 border-amber-500' : ''
+                  currentSection === 'landing' ? 'border-b-2 border-amber-500' : ''
                 }`}
               >
-                About
-              </a>
-              <a
-                href="#menu"
+                Home
+              </button>
+              <button
+                onClick={() => handleNavClick('order')}
                 className={`text-[11px] text-gray-500 hover:text-gray-400 tracking-[0.3em] uppercase font-light italic transition-colors ${
-                  activeSection === 'menu' ? 'border-b-2 border-amber-500' : ''
+                  currentSection === 'order' ? 'border-b-2 border-amber-500' : ''
                 }`}
               >
-                Menu
-              </a>
+                Order
+              </button>
             </div>
 
             {/* Center logo placeholder */}
             <div className="absolute left-1/2 transform -translate-x-1/2">
-              <div className="w-14 h-14 rounded-full bg-black flex items-center justify-center">
-                <span className="text-white text-2xl font-bold"></span>
-              </div>
+              <button
+                onClick={() => handleNavClick('landing')}
+                className="w-14 h-14 rounded-full  flex items-center justify-center hover:bg-gray-800 transition-colors"
+              >
+                <span className="text-white text-2xl font-bold">🍪</span>
+              </button>
             </div>
 
             {/* Right navigation items */}
             <div className="flex items-center gap-20 mr-20">
-              <a
-                href="#portfolio"
+              <button
+                onClick={() => handleNavClick('about')}
                 className={`text-[11px] text-gray-500 hover:text-gray-400 tracking-[0.3em] uppercase font-light italic transition-colors ${
-                  activeSection === 'portfolio' ? 'border-b-2 border-amber-500' : ''
+                  currentSection === 'about' ? 'border-b-2 border-amber-500' : ''
                 }`}
               >
-                Portfolio
-              </a>
-              <a
-                href="#contact"
+                About
+              </button>
+              <button
+                onClick={() => handleNavClick('order')}
                 className={`text-[11px] text-gray-500 hover:text-gray-400 tracking-[0.3em] uppercase font-light italic transition-colors ${
-                  activeSection === 'contact' ? 'border-b-2 border-amber-500' : ''
+                  currentSection === 'order' ? 'border-b-2 border-amber-500' : ''
                 }`}
               >
-                Contact
-              </a>
+                Menu
+              </button>
             </div>
           </div>
 
           {/* Mobile logo */}
           <div className="lg:hidden">
-            <div className="w-16 h-16 rounded-full bg-black flex items-center justify-center">
-              <span className="text-white text-xl font-bold">🍪</span>
-            </div>
+            <button
+              onClick={() => handleNavClick('landing')}
+              className="w-16 h-16 rounded-full flex items-center justify-center hover:bg-gray-100 transition-colors"
+            >
+              <span className="text-2xl font-bold">🍪</span>
+            </button>
           </div>
 
           {/* Empty div for mobile layout balance */}
@@ -106,60 +95,48 @@ const Navbar: React.FC = () => {
       </div>
 
       {/* Mobile menu */}
-      {isMobileMenuOpen && (
-        <div className="lg:hidden absolute top-full left-0 right-0 bg-[#f8f8f6] border-t border-gray-100 z-50">
-          <div className="px-4 py-4 space-y-4">
-            <a
-              href="#home"
-              className={`block text-[11px] text-gray-500 tracking-[0.3em] uppercase font-light italic ${
-                activeSection === 'home' ? 'border-b-2 border-amber-500' : ''
+      <div className={`lg:hidden overflow-hidden transition-all duration-500 ease-in-out ${
+        isMobileMenuOpen ? 'max-h-64 opacity-100' : 'max-h-0 opacity-0'
+      }`}>
+        <div className="bg-[#f8f8f6] border-t border-gray-100 z-[9999]">
+          <div className={`px-4 py-4 space-y-4 transform transition-transform duration-500 ease-in-out ${
+            isMobileMenuOpen ? 'translate-y-0' : '-translate-y-4'
+          }`}>
+            <button
+              onClick={() => handleNavClick('landing')}
+              className={`block w-full text-left text-[11px] text-gray-500 tracking-[0.3em] uppercase font-light italic transition-colors hover:text-gray-700 ${
+                currentSection === 'landing' ? 'border-b-2 border-amber-500' : ''
               }`}
             >
               Home
-            </a>
-            <a
-              href="#about"
-              className={`block text-[11px] text-gray-500 tracking-[0.3em] uppercase font-light italic ${
-                activeSection === 'about' ? 'border-b-2 border-amber-500' : ''
+            </button>
+            <button
+              onClick={() => handleNavClick('order')}
+              className={`block w-full text-left text-[11px] text-gray-500 tracking-[0.3em] uppercase font-light italic transition-colors hover:text-gray-700 ${
+                currentSection === 'order' ? 'border-b-2 border-amber-500' : ''
+              }`}
+            >
+              Order
+            </button>
+            <button
+              onClick={() => handleNavClick('about')}
+              className={`block w-full text-left text-[11px] text-gray-500 tracking-[0.3em] uppercase font-light italic transition-colors hover:text-gray-700 ${
+                currentSection === 'about' ? 'border-b-2 border-amber-500' : ''
               }`}
             >
               About
-            </a>
-            <a
-              href="#menu"
-              className={`block text-[11px] text-gray-500 tracking-[0.3em] uppercase font-light italic ${
-                activeSection === 'menu' ? 'border-b-2 border-amber-500' : ''
+            </button>
+            <button
+              onClick={() => handleNavClick('order')}
+              className={`block w-full text-left text-[11px] text-gray-500 tracking-[0.3em] uppercase font-light italic transition-colors hover:text-gray-700 ${
+                currentSection === 'order' ? 'border-b-2 border-amber-500' : ''
               }`}
             >
               Menu
-            </a>
-            <a
-              href="#services"
-              className={`block text-[11px] text-gray-500 tracking-[0.3em] uppercase font-light italic ${
-                activeSection === 'services' ? 'border-b-2 border-amber-500' : ''
-              }`}
-            >
-              Services
-            </a>
-            <a
-              href="#portfolio"
-              className={`block text-[11px] text-gray-500 tracking-[0.3em] uppercase font-light italic ${
-                activeSection === 'portfolio' ? 'border-b-2 border-amber-500' : ''
-              }`}
-            >
-              Portfolio
-            </a>
-            <a
-              href="#contact"
-              className={`block text-[11px] text-gray-500 tracking-[0.3em] uppercase font-light italic ${
-                activeSection === 'contact' ? 'border-b-2 border-amber-500' : ''
-              }`}
-            >
-              Contact
-            </a>
+            </button>
           </div>
         </div>
-      )}
+      </div>
     </nav>
   );
 };
