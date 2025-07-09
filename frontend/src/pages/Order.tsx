@@ -68,7 +68,7 @@ const CoffeeLandingPage = () => {
 
       {/* Left Side - Content */}
       <div className="w-1/2 flex items-center justify-center px-8 bg-[#FBF5ED]">
-        <div className="max-w-md">
+        <div className="max-w-xl">
           {/* Coffee type numbers */}
           <div className="text-right mb-8 text-gray-400 hidden">
             <div className="text-sm">01</div>
@@ -76,7 +76,7 @@ const CoffeeLandingPage = () => {
           </div>
           
           {/* Main Content */}
-          <h1 className="text-4xl md:text-7xl font-light mb-8 tracking-tight">Live a little </h1>
+          <h1 className="text-4xl md:text-8xl font-light mb-8 tracking-tight">Live a little </h1>
           
           <p className="text-gray-600 text-sm leading-relaxed mb-8">
             Latte is a coffee drink made with espresso and steamed

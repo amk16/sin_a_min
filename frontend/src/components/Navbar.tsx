@@ -70,9 +70,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentSection, onNavigate }) => {
               </button>
               <button
                 onClick={() => handleNavClick('order')}
-                className={`text-[11px] text-gray-500 hover:text-gray-400 tracking-[0.3em] uppercase font-light italic transition-colors ${
-                  currentSection === 'order' ? 'border-b-2 border-amber-500' : ''
-                }`}
+                className="text-[11px] text-gray-500 hover:text-gray-400 tracking-[0.3em] uppercase font-light italic transition-colors"
               >
                 Menu
               </button>
@@ -128,9 +126,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentSection, onNavigate }) => {
             </button>
             <button
               onClick={() => handleNavClick('order')}
-              className={`block w-full text-left text-[11px] text-gray-500 tracking-[0.3em] uppercase font-light italic transition-colors hover:text-gray-700 ${
-                currentSection === 'order' ? 'border-b-2 border-amber-500' : ''
-              }`}
+              className="block w-full text-left text-[11px] text-gray-500 tracking-[0.3em] uppercase font-light italic transition-colors hover:text-gray-700"
             >
               Menu
             </button>

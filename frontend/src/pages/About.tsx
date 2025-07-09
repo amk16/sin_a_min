@@ -28,7 +28,7 @@ const PortfolioSection: React.FC<PortfolioSectionProps> = ({
       {/* Main container */}
       <div className="relative h-screen flex items-center">
         <div className="container mx-auto max-w-7xl">
-          <div className="grid grid-cols-12 lg:gap-8 items-center">
+          <div className="grid grid-cols-12  items-center">
             {/* Mobile - Right side image at top */} 
             <div className="col-span-12 lg:hidden flex justify-center mb-12 -mt-8">
               <div className="w-48 h-48">
@@ -42,8 +42,8 @@ const PortfolioSection: React.FC<PortfolioSectionProps> = ({
               </div>
             </div>
 
-            {/* Left side - Architecture image with jail bars - Hidden on mobile */}
-            <div className="hidden lg:flex col-span-12 lg:col-span-5">
+            {/* Left side - food image with jail bars - Hidden on mobile */}
+            <div className="hidden lg:flex col-span-12 lg:col-span-5 relative -ml-16 xl:-ml-40 2xl:-ml-52">
               <div className="relative">
                 {/* Single subtle orbiting element */}
                 <div className="absolute inset-0 -inset-8 pointer-events-none">
@@ -115,10 +115,10 @@ const PortfolioSection: React.FC<PortfolioSectionProps> = ({
               </div>
             </div>
 
-            {/* Far right - Image - Desktop only */}
-            <div className="hidden lg:flex col-span-12 lg:col-span-3 items-center justify-end py-0 lg:py-0 relative">
-              <div className="w-full lg:absolute lg:right-0 lg:mr-0 lg:transform lg:translate-x-4">
-                <div className="aspect-[3/4] overflow-hidden">
+            {/* Far right - Image */}
+            <div className="hidden lg:flex col-span-12 lg:col-span-3 items-center justify-center py-0 lg:py-0 relative -mr-16 xl:-mr-40 2xl:-mr-52">
+              <div className="w-full lg:absolute lg:right-[-25%] lg:mr-0 lg:top-3/4 lg:-translate-y-1/2">
+                <div className="aspect-[9/10] overflow-hidden"> {/* Changed aspect ratio to be shorter */}
                   <img
                     src={rightImage}
                     alt="Chef Sachika"

@@ -7,7 +7,7 @@ const BakeryHeader: React.FC = () => {
       {/* Vertical line positioned outside the overflow-hidden container */}
       <div
         className="absolute left-11 w-px bg-gray-300 z-20 hidden lg:block"
-        style={{ top: '37%', height: '100vh' }}
+        style={{ top: '27%', height: '100vh' }}
       ></div>
       
       <div className="min-h-screen bg-[#FBF5ED] relative overflow-hidden">
@@ -20,7 +20,7 @@ const BakeryHeader: React.FC = () => {
               
         {/* Hero section with cookie image */}
         <div className="relative bg-[#FBF5ED] overflow-hidden">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-8 lg:py-16">
+          <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-12 py-8 lg:py-16">
             <div className="relative">
               {/* Left side - vertical "made with love" and line starting after the word (desktop only) */}
               <div className="hidden lg:flex flex-col items-center absolute -left-4 top-0 h-full pt-8 pl-2">
@@ -60,7 +60,7 @@ const BakeryHeader: React.FC = () => {
                   </div>
                   
                   {/* Cookie image */}
-                  <div className="w-55 h-55 lg:w-60 lg:h-60 rounded-full overflow-hidden shadow-sm shadow-amber-500 relative z-10">
+                  <div className="w-55 h-55 lg:w-100 lg:h-100 rounded-full overflow-hidden shadow-sm shadow-amber-500 relative z-10">
                     <img
                       src="/cookie.png"
                       alt="Stack of cookies"
