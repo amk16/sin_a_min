@@ -77,7 +77,7 @@ const App = () => {
   }, [currentSection]);
 
   return (
-    <div className="flex flex-col lg:pt-24">
+    <div className="flex flex-col lg:pt-20">
       <Navbar 
         currentSection={sections[currentSection]} 
         onNavigate={handleNavbarNavigation}
