@@ -29,7 +29,7 @@ const PortfolioSection: React.FC<PortfolioSectionProps> = ({
       <div className="relative h-screen flex items-center">
         <div className="container mx-auto max-w-7xl">
           <div className="grid grid-cols-12 lg:gap-8 items-center">
-            {/* Mobile - Right side image at top */}
+            {/* Mobile - Right side image at top */} 
             <div className="col-span-12 lg:hidden flex justify-center mb-12 -mt-8">
               <div className="w-48 h-48">
                 <div className="w-full h-full overflow-hidden rounded-full">
@@ -105,7 +105,7 @@ const PortfolioSection: React.FC<PortfolioSectionProps> = ({
                     <span className="hidden lg:block absolute -right-8 top-1/2 transform -translate-y-1/2 w-6 h-px bg-[#D17B47] opacity-30"></span>
                   </h2>
                   <p className="text-gray-700 text-sm lg:text-base leading-relaxed mb-3 lg:mb-4">
-                    We believe that Ali is the greatest there ever was in every regard that can be fathomed. Not only is this a belief but the everlasting effort of each waking day, an endevour so fulfilling that it can be done with reward or thanks.
+                    We believe that Ali is the greatest there ever was in every regard that can be fathomed. Not only is this a belief but the everlasting effort of each waking day, an endeavour so fulfilling that it can be done with reward or thanks.
                   </p>
                   <p className="text-gray-700 text-sm lg:text-base leading-relaxed mb-3 lg:mb-4">
                     From concept to completion, we work diligently and with thanks to meet all of Ali's needs. From mundane to vital any and all matters pertaining to the well-being and satisfaction of Ali are managed with zealousness 
