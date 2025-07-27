@@ -13,8 +13,18 @@ const PortfolioSection: React.FC<PortfolioSectionProps> = ({
     <div className="min-h-screen bg-[#FBF5ED] relative overflow-hidden">
       {/* Minimal ambient circles */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute w-64 h-64 bg-[#D17B47] rounded-full opacity-4 -top-32 -left-32 animate-pulse" style={{ animationDuration: '10s' }}></div>
-        <div className="absolute w-48 h-48 bg-amber-500 rounded-full opacity-6 bottom-32 right-1/4 animate-pulse" style={{ animationDuration: '8s' }}></div>
+        
+        {/* Background circle */}
+        <div className="absolute w-82 h-82 rounded-full bottom-22 right-1/6 bg-[#D17B47] opacity-20"></div>
+        
+        {/* Image circle */}
+        <div className="absolute w-75 h-75 rounded-full bottom-20 right-1/7  overflow-hidden border-3 border-white" >
+          <img
+            src={rightImage}
+            alt="Chef Sachika"
+            className="w-full h-full object-cover"
+          />
+        </div>
       </div>
 
       {/* Grid background pattern - subtle */}
@@ -31,7 +41,7 @@ const PortfolioSection: React.FC<PortfolioSectionProps> = ({
           <div className="grid grid-cols-12  items-center">
             {/* Mobile - Right side image at top */} 
             <div className="col-span-12 lg:hidden flex justify-center mb-12 -mt-8">
-              <div className="w-48 h-48">
+              <div className="w-60 h-60">
                 <div className="w-full h-full overflow-hidden rounded-full">
                   <img
                     src={rightImage}
@@ -93,7 +103,7 @@ const PortfolioSection: React.FC<PortfolioSectionProps> = ({
             </div>
 
             {/* Right side - Text content */}
-            <div className="col-span-12 lg:col-span-4 flex items-start lg:items-center justify-center lg:py-0 -mt-12 lg:mt-0 lg:min-h-auto">
+            <div className="col-span-12 lg:col-start-6 lg:col-span-4 flex items-start lg:items-center justify-center lg:py-0 -mt-20 lg:-mt-20 lg:min-h-auto">
               <div className="max-w-md lg:max-w-md relative px-4 lg:px-0">
                 {/* Single subtle accent dot */}
                 <div className="absolute -top-2 -right-2 w-2 h-2 bg-[#D17B47] rounded-full opacity-25 animate-pulse" style={{ animationDuration: '4s' }}></div>
@@ -115,18 +125,8 @@ const PortfolioSection: React.FC<PortfolioSectionProps> = ({
               </div>
             </div>
 
-            {/* Far right - Image */}
-            <div className="hidden lg:flex col-span-12 lg:col-span-3 items-center justify-center py-0 lg:py-0 relative -mr-16 xl:-mr-40 2xl:-mr-52">
-              <div className="w-full lg:absolute lg:right-[-25%] lg:mr-0 lg:top-3/4 lg:-translate-y-1/2">
-                <div className="aspect-[9/10] overflow-hidden"> {/* Changed aspect ratio to be shorter */}
-                  <img
-                    src={rightImage}
-                    alt="Chef Sachika"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              </div>
-            </div>
+            {/* Far right - Image (now in ambient circle) */}
+            
           </div>
         </div>
       </div>

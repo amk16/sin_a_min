@@ -45,7 +45,14 @@ const CoffeeLandingPage = () => {
   return (
     <div className="min-h-screen flex bg-[#eae5de] flex-row-reverse relative">
       {/* Vertical line aligning with Landing page */}
-      <div className="absolute left-11 top-0 w-px bg-gray-300 h-70 z-20 hidden md:block"></div>
+      <div className="absolute left-11 top-0 w-px bg-gray-300 h-72 z-20 hidden md:block"></div>
+      
+      {/* Rotating element at the end of the line */}
+      <div className="absolute left-11 top-72 transform -translate-x-1/2 z-20 hidden md:block">
+        <div>
+          <span className="text-xl">🧡</span>
+        </div>
+      </div>
       
       
       
@@ -79,13 +86,12 @@ const CoffeeLandingPage = () => {
           <h1 className="text-4xl md:text-8xl font-light mb-8 tracking-tight">Live a little </h1>
           
           <p className="text-gray-600 text-sm leading-relaxed mb-8">
-            Latte is a coffee drink made with espresso and steamed
-            milk. The term comes from the Italian caffè e latte, caffelatte
-            or caffellatte, which means 'coffee & milk'.
+            Sweeten up your day with a mini treat. Add some spice in your life with our sweet treats.
+            We have a variety of sins to choose from, including cookies, cakes, and more.
           </p>
           
           {/* Order Button */}
-          <button className="bg-yellow-700 hover:bg-yellow-800 text-white px-8 py-3 text-sm uppercase tracking-wider transition-colors duration-200">
+          <button className="bg-gradient-to-r from-orange-600 via-orange-500 to-rose-300 hover:bg-orange-700 text-white px-8 py-3 text-sm uppercase tracking-wider transition-colors duration-200">
             Order Now
           </button>
           
